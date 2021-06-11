@@ -1,6 +1,7 @@
 import os 
 import shutil 
-import time 
+import time
+import sys
 
 
 def read_all_file(path): 
@@ -36,9 +37,15 @@ def copy_all_file(file_list, new_path):
             line = f.readline()
    
 
-src_path = "C:/Users/kimjeonghwan/Desktop/asis/AttachFile/Storage" # 기존 폴더 경로
-new_path = "C:/Users/kimjeonghwan/Desktop/copy/" # 옮길 폴더 경로
-f = open('./input.py','r')
+if __name__ == '__main__':
 
-file_list = read_all_file(src_path)
-copy_all_file(file_list, new_path)
+    if len(sys.argv) !=3:
+        print("Insufficient arguments!!")
+        sys.exit()
+        
+    src_path = sys.argv[1]
+    new_path = sys.argv[2]
+    f = open('./input.py','r')
+
+    file_list = read_all_file(src_path)
+    copy_all_file(file_list, new_path)
